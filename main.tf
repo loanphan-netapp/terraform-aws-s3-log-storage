@@ -16,8 +16,7 @@ module "bucket_name" {
 
 
 module "aws_s3_bucket" {
-  source  = "cloudposse/s3-bucket/aws"
-  version = "3.1.2"
+  source  = "git::https://github.com/loanphan-netapp/terraform-aws-s3-bucket?ref=ic-console2-dns"
 
   bucket_name        = local.bucket_name
   acl                = var.acl
@@ -33,6 +32,7 @@ module "aws_s3_bucket" {
   # Support deprecated lifecycle inputs
   lifecycle_rule_ids = local.deprecated_lifecycle_rule.enabled ? [module.this.id] : null
   lifecycle_rules    = local.deprecated_lifecycle_rule.enabled ? [local.deprecated_lifecycle_rule] : null
+  transition_default_minimum_object_size = var.transition_default_minimum_object_size
 
   logging = var.access_log_bucket_name == "" ? null : {
     bucket_name = var.access_log_bucket_name

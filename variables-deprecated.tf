@@ -75,15 +75,20 @@ variable "noncurrent_version_expiration_days" {
   default     = null
 }
 
+variable "transition_default_minimum_object_size" {
+  type        = string
+  default     = "all_storage_classes_128K"
+  description = "The default minimum object size behavior applied to the lifecycle configuration"
+}
 
 
 locals {
   deprecated_lifecycle_rule = {
     enabled = var.lifecycle_rule_enabled == true || (var.lifecycle_rule_enabled == null && length(var.lifecycle_configuration_rules) == 0)
     prefix  = var.lifecycle_prefix
-    tags    = var.lifecycle_tags
+    tags    = module.this.tags
 
-    abort_incomplete_multipart_upload_days = coalesce(var.abort_incomplete_multipart_upload_days, 5)
+    abort_incomplete_multipart_upload_days = null
 
     enable_glacier_transition            = coalesce(var.enable_glacier_transition, true)
     enable_deeparchive_transition        = false
