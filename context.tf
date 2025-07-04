@@ -21,7 +21,7 @@
 #
 
 module "this" {
-  source  = "git::https://github.com/loanphan-netapp/terraform-null-label?ref=ic-console2-dns"
+  source  = "git::https://github.com/instaclustr/terraform-null-label?ref=ic-console2-dns"
 
   enabled             = var.enabled
   namespace           = var.namespace

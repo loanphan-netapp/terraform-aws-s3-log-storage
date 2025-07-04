@@ -16,7 +16,7 @@ module "bucket_name" {
 
 
 module "aws_s3_bucket" {
-  source  = "git::https://github.com/loanphan-netapp/terraform-aws-s3-bucket?ref=ic-console2-dns"
+  source  = "git::https://github.com/instaclustr/terraform-aws-s3-bucket?ref=ic-console2-dns"
 
   bucket_name        = local.bucket_name
   acl                = var.acl
