@@ -21,7 +21,7 @@
 #
 
 module "this" {
-  source  = "git::https://github.com/instaclustr/terraform-null-label?ref=ic-console2-dns"
+  source  = "git::https://github.com/instaclustr/terraform-null-label?ref=0.25.0-instaclustr"
 
   enabled             = var.enabled
   namespace           = var.namespace
